@@ -329,7 +329,7 @@ function renderAnalytics(){
     ['<1.5×',myRuns.filter(r=>Number(r.multiplier)<1.5).length],
     ['1.5–2×',myRuns.filter(r=>Number(r.multiplier)>=1.5&&Number(r.multiplier)<2).length],
     ['2–2.5×',myRuns.filter(r=>Number(r.multiplier)>=2&&Number(r.multiplier)<2.5).length],
-    ['2.5×+',myRuns.filter(r=>Number(r.multiplier)>=2.5).length]
+    ['7–8×',myRuns.filter(r=>Number(r.multiplier)>=2.5).length]
   ];
   $('#analyticsBars').innerHTML=bands.map(([l,n])=>`<div class="analytics-line"><span>${l}</span><div class="analytics-track"><i style="width:${Math.round(n/total*100)}%"></i></div><b>${Math.round(n/total*100)}%</b></div>`).join('');
 }
@@ -404,7 +404,31 @@ function renderMyRuns(){const box=$('#myRunLog');if(!box)return;const bangs=myRu
 function subscribeMyRuns(){if(runsChannel)supabase.removeChannel(runsChannel);runsChannel=supabase.channel('my-runs-'+session.user.id).on('postgres_changes',{event:'INSERT',schema:'public',table:'runs',filter:'user_id=eq.'+session.user.id},p=>{myRuns.unshift(p.new);myRuns=myRuns.slice(0,30);renderMyRuns();renderAnalytics();}).subscribe();}
 let boardChannel=null;function subscribeLeaderboard(){if(boardChannel)supabase.removeChannel(boardChannel);boardChannel=supabase.channel('live-leaderboard').on('postgres_changes',{event:'*',schema:'public',table:'profiles'},()=>loadLeaderboard()).subscribe();}
 function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function makeCrash(){const r=Math.random();let p,profile='standard';if(r<0.90){const x=Math.random();p=1.01+(1.99-1.01)*Math.pow(x,2.15);}else if(r<0.98){const x=Math.random();p=2.00+(2.50-2.00)*Math.pow(x,1.35);}else{profile='extended';const x=Math.random();p=2.51+(8.00-2.51)*Math.pow(x,2.35);}return{point:+p.toFixed(2),profile}}
+function makeCrash(){
+  const r=Math.random()*100;
+  let min=1.02,max=1.49,profile='standard';
+
+  if(r<25){
+    min=1.02; max=1.49;
+  }else if(r<47){
+    min=1.50; max=1.99;
+  }else if(r<69){
+    min=2.00; max=2.99;
+  }else if(r<82){
+    min=3.00; max=3.99; profile='extended';
+  }else if(r<90){
+    min=4.00; max=4.99; profile='extended';
+  }else if(r<95){
+    min=5.00; max=5.99; profile='extended';
+  }else if(r<98){
+    min=6.00; max=6.99; profile='extended';
+  }else{
+    min=7.00; max=8.00; profile='extended';
+  }
+
+  const point=Math.min(8,Math.round((min+Math.random()*(max-min))*100)/100);
+  return {point,profile};
+}
 function renderRecent(){$('#recent').innerHTML=recent.map(v=>`<span style="color:${v>=5?'var(--yellow)':v>=2?'var(--green)':'#8b90ad'}">${v.toFixed(2)}×</span>`).join('')}
 function update(){
   $('#mult').textContent=mult.toFixed(2);
