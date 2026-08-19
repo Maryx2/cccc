@@ -405,13 +405,13 @@ let boardChannel=null;function subscribeLeaderboard(){if(boardChannel)supabase.r
 function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function makeCrash(){
   // Fixed theoretical curve:
-  // P(reaching x) ~= 0.95 / x for 1.01x <= x <= 8.00x.
-  // This corresponds to a 95% theoretical RTP / 5% house edge
+  // P(reaching x) ~= 0.88 / x for 1.01x <= x <= 8.00x.
+  // This corresponds to a 88% theoretical RTP / 12% house edge
   // when payout is exactly wager × cashout multiplier.
-  const HOUSE_EDGE=0.05;
+  const HOUSE_EDGE=0.12;
   const MAX_MULTIPLIER=8.00;
 
-  // 5% instant-bust mass. This is what creates the fixed 5% edge
+  // 12% instant-bust mass. This is what creates the fixed 12% edge
   // across cashout targets instead of secretly changing odds by target.
   if(Math.random()<HOUSE_EDGE){
     return {point:1.00,profile:'standard',capped:false};
