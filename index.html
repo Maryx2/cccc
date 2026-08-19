@@ -225,11 +225,16 @@ body.crt-mode .app{filter:saturate(1.08) contrast(1.025)}
   <div class="top"><div class="brand">STARBLAST <i>ARCADE</i></div><div class="account"><div><b id="topUsername">PILOT</b><small id="topLevel">LEVEL 1</small></div><div class="token-chip" id="tokenChip"><span class="hnt-coin">HN</span><span>0 HNT</span></div><button class="sound-toggle" id="soundToggle" type="button" title="Toggle arcade sound">SOUND ON</button><button class="crt-toggle" id="crtToggle" type="button">CRT OFF</button><a class="admin-link" href="/admin">ADMIN</a><button id="logout">LOG OUT</button></div></div><div id="announcement" class="hidden" style="margin:-4px 0 12px;padding:10px 13px;border:1px solid rgba(255,221,105,.28);background:rgba(255,221,105,.08);border-radius:11px;color:#ffe59a;font-size:10px;font-weight:800"></div>
   <div class="arcade-ticker"><div class="ticker-label">LIVE SYSTEM FEED</div><div class="ticker-window"><div class="ticker-track" id="tickerTrack"><span>STARBLAST NETWORK ONLINE</span><span>WAITING FOR PILOT ACTIVITY</span></div></div></div>
 <div class="layout">
-    <section class="arena" id="arena"><div class="stars"></div><div class="hud"><div class="pill" id="status">READY</div><div class="pill">95/5 CRASH ENGINE</div><div class="pill right">BEST <span id="bestMult">1.00×</span></div></div><div class="rocket" id="rocket" aria-label="Rocket"><svg viewBox="0 0 160 96" role="img"><defs><linearGradient id="shipBody" x1="0" x2="1"><stop offset="0" stop-color="#e9f7ff"/><stop offset=".52" stop-color="#8eddf1"/><stop offset="1" stop-color="#6d63ff"/></linearGradient><linearGradient id="window" x1="0" x2="1"><stop offset="0" stop-color="#9bf7ff"/><stop offset="1" stop-color="#4aa3ff"/></linearGradient><linearGradient id="flame" x1="0" x2="1"><stop offset="0" stop-color="#fff4a8"/><stop offset=".42" stop-color="#ffb347"/><stop offset="1" stop-color="#ff3f8e"/></linearGradient></defs><g class="rocket-art"><path class="flame outer" d="M31 48 C13 35,5 42,0 48 C7 55,14 59,31 52Z" fill="url(#flame)"/><path class="flame inner" d="M31 48 C19 42,14 45,10 48 C16 52,21 53,31 50Z" fill="#f5fbff"/><path d="M38 32 L26 18 L46 25Z" fill="#ff4b91"/><path d="M38 64 L26 78 L46 71Z" fill="#ff4b91"/><path d="M29 39 L44 39 L44 57 L29 57Z" rx="4" fill="#3f365f"/><path d="M39 29 C61 15,95 16,126 31 C139 37,151 44,158 48 C151 52,139 59,126 65 C95 80,61 81,39 67 C32 60,29 55,29 48 C29 41,32 36,39 29Z" fill="url(#shipBody)"/><path d="M119 31 C133 35,147 43,158 48 C147 53,133 61,119 65 C126 54,126 42,119 31Z" fill="#ff3f8e" opacity=".92"/><ellipse cx="81" cy="41" rx="14" ry="10" fill="#10223f" opacity=".9"/><ellipse cx="79" cy="39" rx="10" ry="7" fill="url(#window)"/><path d="M54 58 C75 68,102 67,123 59" fill="none" stroke="#ffffff" stroke-opacity=".25" stroke-width="3" stroke-linecap="round"/></g></svg></div><div id="boom"></div><div class="countdown-overlay" id="countdownOverlay"><div class="countdown-kicker">SYSTEM RECHARGING</div><div class="countdown-number" id="countdownNumber">10</div><div class="countdown-track"><i id="countdownBar"></i></div></div><div class="readout"><small>VELOCITY MULTIPLIER</small><strong><span id="mult">1.00</span><em>×</em></strong><p id="hint">Launch, climb, and eject before system failure.</p></div><div class="zone-line zone-2"><span>2.00× LUCKY ZONE</span></div><div class="zone-line zone-25"><span>2.50× EXTREME</span></div><div class="danger"><div><i id="danger"></i></div></div><div class="attract" id="attract">INSERT HNT · PRESS SPACE TO LAUNCH</div><div class="recent" id="recent"></div></section>
+    <section class="arena" id="arena"><div class="stars"></div><div class="hud"><div class="pill" id="status">READY</div><div class="pill">95% RTP · 5% EDGE · MAX 8.00×</div><div class="pill right">BEST <span id="bestMult">1.00×</span></div></div><div class="rocket" id="rocket" aria-label="Rocket"><svg viewBox="0 0 160 96" role="img"><defs><linearGradient id="shipBody" x1="0" x2="1"><stop offset="0" stop-color="#e9f7ff"/><stop offset=".52" stop-color="#8eddf1"/><stop offset="1" stop-color="#6d63ff"/></linearGradient><linearGradient id="window" x1="0" x2="1"><stop offset="0" stop-color="#9bf7ff"/><stop offset="1" stop-color="#4aa3ff"/></linearGradient><linearGradient id="flame" x1="0" x2="1"><stop offset="0" stop-color="#fff4a8"/><stop offset=".42" stop-color="#ffb347"/><stop offset="1" stop-color="#ff3f8e"/></linearGradient></defs><g class="rocket-art"><path class="flame outer" d="M31 48 C13 35,5 42,0 48 C7 55,14 59,31 52Z" fill="url(#flame)"/><path class="flame inner" d="M31 48 C19 42,14 45,10 48 C16 52,21 53,31 50Z" fill="#f5fbff"/><path d="M38 32 L26 18 L46 25Z" fill="#ff4b91"/><path d="M38 64 L26 78 L46 71Z" fill="#ff4b91"/><path d="M29 39 L44 39 L44 57 L29 57Z" rx="4" fill="#3f365f"/><path d="M39 29 C61 15,95 16,126 31 C139 37,151 44,158 48 C151 52,139 59,126 65 C95 80,61 81,39 67 C32 60,29 55,29 48 C29 41,32 36,39 29Z" fill="url(#shipBody)"/><path d="M119 31 C133 35,147 43,158 48 C147 53,133 61,119 65 C126 54,126 42,119 31Z" fill="#ff3f8e" opacity=".92"/><ellipse cx="81" cy="41" rx="14" ry="10" fill="#10223f" opacity=".9"/><ellipse cx="79" cy="39" rx="10" ry="7" fill="url(#window)"/><path d="M54 58 C75 68,102 67,123 59" fill="none" stroke="#ffffff" stroke-opacity=".25" stroke-width="3" stroke-linecap="round"/></g></svg></div><div id="boom"></div><div class="countdown-overlay" id="countdownOverlay"><div class="countdown-kicker">SYSTEM RECHARGING</div><div class="countdown-number" id="countdownNumber">10</div><div class="countdown-track"><i id="countdownBar"></i></div></div><div class="readout"><small>VELOCITY MULTIPLIER</small><strong><span id="mult">1.00</span><em>×</em></strong><p id="hint">Launch, climb, and eject before system failure.</p></div><div class="zone-line zone-2"><span>2.00× LUCKY ZONE</span></div><div class="zone-line zone-25"><span>2.50× EXTREME</span></div><div class="danger"><div><i id="danger"></i></div></div><div class="attract" id="attract">INSERT HNT · PRESS SPACE TO LAUNCH</div><div class="recent" id="recent"></div></section>
 <div class="card launch-control-card">
   <div class="launch-control-head"><span>FLIGHT CONTROL</span><small>HNT REQUIRED</small></div>
   <button class="mega" id="mainBtn" disabled><span>LAUNCH ROCKET</span><small>START A NEW RUN</small></button>
 </div>
+
+  <div id="fairnessNote" style="max-width:440px;margin:7px auto 0;text-align:center;color:#70799d;font-size:8px;font-weight:800;letter-spacing:.04em">
+    THEORETICAL RTP 95% · FIXED 5% EDGE · CRASH POINT SET AT LAUNCH · 8.00× MAX
+  </div>
+
 
     <aside class="panel">
       <div class="card"><h3>PILOT CAREER</h3><div class="career"><div class="stat"><small>TOTAL SCORE</small><b id="totalScore">0</b></div><div class="stat"><small>BEST RUN</small><b id="bestScore">0</b></div><div class="stat"><small>LAUNCHES</small><b id="launches">0</b></div><div class="stat"><small>SUCCESS RATE</small><b id="successRate">0%</b></div><div class="stat"><small>HIGH NOTES TOKENS</small><b id="tokenBalance">0 HNT</b></div></div><div class="xp"><i id="xpbar" style="width:0%"></i></div></div>
@@ -405,31 +410,30 @@ function subscribeMyRuns(){if(runsChannel)supabase.removeChannel(runsChannel);ru
 let boardChannel=null;function subscribeLeaderboard(){if(boardChannel)supabase.removeChannel(boardChannel);boardChannel=supabase.channel('live-leaderboard').on('postgres_changes',{event:'*',schema:'public',table:'profiles'},()=>loadLeaderboard()).subscribe();}
 function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function makeCrash(){
-  // Relative weights: 15 / 10 / 7 / 6 / 5 / 4 / 3 / 2 (total 52).
-  // This preserves the requested weighting while normalizing it to 100%.
-  const roll=Math.random()*52;
-  let min=1.02,max=1.49,profile='standard';
+  // Fixed theoretical curve:
+  // P(reaching x) ~= 0.95 / x for 1.01x <= x <= 8.00x.
+  // This corresponds to a 95% theoretical RTP / 5% house edge
+  // when payout is exactly wager × cashout multiplier.
+  const HOUSE_EDGE=0.05;
+  const MAX_MULTIPLIER=8.00;
 
-  if(roll<15){
-    min=1.02; max=1.49;
-  }else if(roll<25){
-    min=1.50; max=1.99;
-  }else if(roll<32){
-    min=2.00; max=2.99;
-  }else if(roll<38){
-    min=3.00; max=3.99; profile='extended';
-  }else if(roll<43){
-    min=4.00; max=4.99; profile='extended';
-  }else if(roll<47){
-    min=5.00; max=5.99; profile='extended';
-  }else if(roll<50){
-    min=6.00; max=6.99; profile='extended';
-  }else{
-    min=7.00; max=8.00; profile='extended';
+  // 5% instant-bust mass. This is what creates the fixed 5% edge
+  // across cashout targets instead of secretly changing odds by target.
+  if(Math.random()<HOUSE_EDGE){
+    return {point:1.00,profile:'standard',capped:false};
   }
 
-  const point=Math.min(8,Math.round((min+Math.random()*(max-min))*100)/100);
-  return {point,profile};
+  // Conditional survival curve P(M >= x | not instant bust) = 1/x.
+  // Flooring to two decimals avoids rounding a losing point upward.
+  const u=Math.max(Number.EPSILON,Math.random());
+  const raw=1/u;
+  const point=Math.min(MAX_MULTIPLIER,Math.floor(raw*100)/100);
+
+  return {
+    point:Math.max(1.01,point),
+    profile:point>=3?'extended':'standard',
+    capped:point>=MAX_MULTIPLIER
+  };
 }
 function renderRecent(){$('#recent').innerHTML=recent.map(v=>`<span style="color:${v>=5?'var(--yellow)':v>=2?'var(--green)':'#8b90ad'}">${v.toFixed(2)}×</span>`).join('')}
 function update(){
@@ -461,7 +465,29 @@ function update(){
   renderRecent();renderMyRuns()
 }
 async function launch(){if(!session||state!=='idle')return;if(gameConfig.maintenance_mode)return showToast('Game is in maintenance mode.');ensureAudio();const roll=makeCrash();crash=roll.point;runProfile=roll.profile;const before=Number(profile?.high_notes_tokens||0);const {data:newBalance,error}=await supabase.rpc('start_run',{p_profile_type:runProfile});if(error){if(/not enough high notes tokens/i.test(error.message||'')){profile.high_notes_tokens=Number(profile.high_notes_tokens||0);renderProfile();update();}return showToast(error.message)}profile.high_notes_tokens=Number(newBalance);renderProfile();if(Number(newBalance)<before){$('#tokenChip').classList.remove('hnt-spend');void $('#tokenChip').offsetWidth;$('#tokenChip').classList.add('hnt-spend');sfx('token')}mult=1;score=0;state='running';lastToneBand=0;start=performance.now();$('#boom').innerHTML='';sfx('launch');addTicker(`<strong>${escapeHtml(profile.username)}</strong> LAUNCHED // ${Number(gameConfig.launch_token_cost||1)} HNT`);update();raf=requestAnimationFrame(tick)}
-function tick(now){const t=(now-start)/1000;mult=1+t*Number(gameConfig.rocket_speed||.08)+Math.pow(t,1.35)*Number(gameConfig.acceleration||.025);score=Math.max(0,Math.floor((mult-1)*760*(1+combo*.08)));if(mult>=crash){mult=crash;fail();return}update();raf=requestAnimationFrame(tick)}
+function tick(now){
+  const t=(now-start)/1000;
+  mult=1+t*Number(gameConfig.rocket_speed||.08)+Math.pow(t,1.35)*Number(gameConfig.acceleration||.025);
+  score=Math.max(0,Math.floor((mult-1)*760*(1+combo*.08)));
+
+  // A target below 8.00x crashes normally.
+  if(crash<8&&mult>=crash){
+    mult=crash;
+    fail();
+    return;
+  }
+
+  // Surviving to the hard cap completes the flight successfully.
+  if(mult>=8){
+    mult=8;
+    update();
+    eject();
+    return;
+  }
+
+  update();
+  raf=requestAnimationFrame(tick);
+}
 async function record(outcome,finalScore){if(!supabase||!session)return;const elapsed=Math.max(0,Math.round(performance.now()-start));const beforeAch=new Set(unlockedAchievements),oldBest=Number(profile?.best_multiplier||1);const {data,error}=await supabase.rpc('record_run',{p_outcome:outcome,p_multiplier:+mult.toFixed(2),p_score:finalScore,p_profile_type:runProfile,p_duration_ms:elapsed});if(error){showToast('Run could not be saved: '+error.message);return}profile=Array.isArray(data)?data[0]:data;if(profile){renderProfile();if(Number(profile.best_multiplier||0)>oldBest)showRecord(oldBest,profile.best_multiplier);for(const a of achievementDefs){if(a[3](profile)&&!beforeAch.has(a[0]))showAchievement(a[1],a[2])}}loadLeaderboard();setTimeout(()=>Promise.all([loadMyRuns(),loadMissions(),loadHntLedger(),loadSeason()]),250);}
 function beginCooldown(){
   $('#boom').innerHTML='';state='cooldown';
