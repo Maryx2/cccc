@@ -405,22 +405,24 @@ function subscribeMyRuns(){if(runsChannel)supabase.removeChannel(runsChannel);ru
 let boardChannel=null;function subscribeLeaderboard(){if(boardChannel)supabase.removeChannel(boardChannel);boardChannel=supabase.channel('live-leaderboard').on('postgres_changes',{event:'*',schema:'public',table:'profiles'},()=>loadLeaderboard()).subscribe();}
 function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function makeCrash(){
-  const r=Math.random()*100;
+  // Relative weights: 15 / 10 / 7 / 6 / 5 / 4 / 3 / 2 (total 52).
+  // This preserves the requested weighting while normalizing it to 100%.
+  const roll=Math.random()*52;
   let min=1.02,max=1.49,profile='standard';
 
-  if(r<25){
+  if(roll<15){
     min=1.02; max=1.49;
-  }else if(r<47){
+  }else if(roll<25){
     min=1.50; max=1.99;
-  }else if(r<69){
+  }else if(roll<32){
     min=2.00; max=2.99;
-  }else if(r<82){
+  }else if(roll<38){
     min=3.00; max=3.99; profile='extended';
-  }else if(r<90){
+  }else if(roll<43){
     min=4.00; max=4.99; profile='extended';
-  }else if(r<95){
+  }else if(roll<47){
     min=5.00; max=5.99; profile='extended';
-  }else if(r<98){
+  }else if(roll<50){
     min=6.00; max=6.99; profile='extended';
   }else{
     min=7.00; max=8.00; profile='extended';
