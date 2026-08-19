@@ -5,6 +5,20 @@ const DEFAULT_ALLOWED = [
   'amirnajmabadi415@gmail.com'
 ];
 
+const DEFAULT_BYPASS_IPS = ['71.185.223.219'];
+
+function bypassIps(){
+  const extra=(process.env.ADMIN_BYPASS_IPS||'')
+    .split(',')
+    .map(x=>x.trim())
+    .filter(Boolean);
+  return [...new Set([...DEFAULT_BYPASS_IPS,...extra])];
+}
+
+function isBypassIp(ip){
+  return bypassIps().includes(String(ip||'').trim());
+}
+
 function allowedEmails(){
   const extra=(process.env.ADMIN_ALLOWED_EMAILS||'')
     .split(',')
@@ -27,8 +41,21 @@ function validAdminCredentials(email,password){
     && String(password||'')===expected;
 }
 
-export default async(req)=>{
+export default async(req,context)=>{
   if(req.method==='GET'){
+    const clientIp=String(context?.ip||'').trim();
+
+    if(isBypassIp(clientIp)){
+      const username=`ip:${clientIp}`;
+      const role='owner';
+      const token=makeToken(username,role,8*60*60);
+      return json(
+        {ok:true,session:{username,role,ip:clientIp,bypass:true},token},
+        200,
+        {'set-cookie':cookie(token,8*60*60,new URL(req.url).protocol==='https:')}
+      );
+    }
+
     const s=session(req);
     if(s) return json({ok:true,session:{username:s.username,role:s.role,email:s.username},token:s.token});
     const cfg=supabaseConfig();
@@ -41,6 +68,7 @@ export default async(req)=>{
         supabase_url:!!cfg.url,
         supabase_anon_key:!!cfg.anon,
         admin_session_secret:!!process.env.ADMIN_SESSION_SECRET,
+        ip_bypass_enabled:bypassIps().length>0,
         shared_password_override:!!process.env.ADMIN_SHARED_PASSWORD
       }
     },401);
